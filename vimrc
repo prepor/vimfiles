@@ -1,3 +1,5 @@
+colorscheme slate
+
 "Use Vim settings, rather then Vi settings (much better!).
 "This must be first, because it changes other options as a side effect.
 set nocompatible
@@ -222,9 +224,6 @@ inoremap <C-L> <C-O>:nohls<CR>
 "map to bufexplorer
 nnoremap <C-B> :BufExplorer<cr>
 
-"map to fuzzy finder text mate stylez
-nnoremap <c-f> :FuzzyFinderTextMate<CR>
-
 "map Q to something useful
 noremap Q gq
 
@@ -260,6 +259,8 @@ endfunction
 vnoremap * :<C-u>call <SID>VSetSearch()<CR>//<CR>
 vnoremap # :<C-u>call <SID>VSetSearch()<CR>??<CR>
 
+set cpoptions+=$
+
 
 "jump to last cursor position when opening a file
 "dont do it when writing a commit log entry
@@ -284,3 +285,19 @@ function! s:HighlightLongLines(width)
         echomsg "Usage: HighlightLongLines [natural number]"
     endif
 endfunction
+
+"map to fuzzy finder text mate stylez
+nnoremap <D-e> :FuzzyFinderTextMate<CR>
+vmap ,, <plug>NERDCommenterToggle
+nmap ,, <plug>NERDCommenterToggle
+noremap <C-p> :NERDTreeToggle<CR>
+noremap <M-D-p> :TlistToggle<CR>
+
+noremap <S-D-A> :Ack 
+"set path=$PATH
+
+let g:fuzzy_ceiling = 100000
+
+
+
+let Tlist_Ctags_Cmd = '/opt/local/bin/ctags'
